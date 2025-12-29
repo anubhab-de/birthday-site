@@ -125,7 +125,7 @@ export const BirthdayWishes = () => {
             animate={isInView ? { opacity: 1 } : {}}
             transition={{ duration: 0.6, delay: 0.5 }}
           >
-            From your sibling, with all my heart
+            With all my heart
           </motion.p>
         </motion.div>
 
@@ -231,7 +231,7 @@ export const BirthdayWishes = () => {
                 transition={{ duration: 1, repeat: Infinity }}
                 className="text-gold text-2xl font-display"
               >
-                🎉 Happy Birthday Anubhab! 🎉
+                🎉 Boom Boom 🎉
               </motion.p>
               <motion.p
                 initial={{ opacity: 0, y: 10 }}

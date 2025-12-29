@@ -1,6 +1,6 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Users, ArrowRight, Sparkles } from "lucide-react";
+import { Users, HelpCircle, Sparkles } from "lucide-react";
 
 export const ReunionMessage = () => {
   const ref = useRef(null);
@@ -33,12 +33,12 @@ export const ReunionMessage = () => {
   return (
     <section ref={ref} className="min-h-screen flex items-center justify-center py-20 px-4 relative overflow-hidden">
       {/* Animated background elements */}
-      <motion.div 
+      <motion.div
         className="absolute left-0 top-1/2 -translate-y-1/2 w-1/3 h-96 bg-gradient-to-r from-gold/5 to-transparent blur-3xl"
         animate={isInView ? { opacity: [0, 1, 0.5], x: [-100, 0, 0] } : {}}
         transition={{ duration: 2 }}
       />
-      
+
       {/* Floating sparkles */}
       {isInView && [...Array(6)].map((_, i) => (
         <motion.div
@@ -49,7 +49,7 @@ export const ReunionMessage = () => {
             top: `${30 + (i % 2) * 40}%`,
           }}
           initial={{ opacity: 0, scale: 0, rotate: 0 }}
-          animate={{ 
+          animate={{
             opacity: [0, 1, 0],
             scale: [0, 1, 0],
             rotate: [0, 180, 360],
@@ -64,8 +64,8 @@ export const ReunionMessage = () => {
           <Sparkles className="w-4 h-4 text-gold/30" />
         </motion.div>
       ))}
-      
-      <motion.div 
+
+      <motion.div
         className="max-w-4xl mx-auto relative z-10"
         variants={containerVariants}
         initial="hidden"
@@ -76,7 +76,7 @@ export const ReunionMessage = () => {
           variants={itemVariants}
           className="flex justify-center mb-8"
         >
-          <motion.div 
+          <motion.div
             className="p-4 rounded-full bg-secondary border border-gold/20"
             animate={isInView ? {
               boxShadow: [
@@ -102,8 +102,8 @@ export const ReunionMessage = () => {
         <div className="space-y-8">
           <motion.div
             variants={itemVariants}
-            whileHover={{ 
-              scale: 1.02, 
+            whileHover={{
+              scale: 1.02,
               rotateY: 5,
               transition: { duration: 0.3 }
             }}
@@ -118,20 +118,53 @@ export const ReunionMessage = () => {
               transition={{ duration: 3, repeat: Infinity, delay: 1.5 }}
             />
             <p className="text-lg md:text-xl text-foreground/90 font-body leading-relaxed">
-              Life took us on different paths for a while, and there were times when I thought 
-              we might never be as close as we once were. But here we are, 
-              <motion.span 
+              Today is officially the anniversary of the day you were accidentally added
+              to this very confusing world.
+
+              <br /><br />
+
+              No patch notes were released.
+              No instruction manual was provided.
+              And somehow, you’re still running on the latest version.
+
+              <br /><br />
+
+              Some people call it growing up.
+              Others call it leveling up.
+              Engineers call it “still in beta.”
+
+              <br /><br />
+
+              If you’re wondering why this page exists,
+              or why it feels like something is hidden between the lines —
+              good. That means you’re paying attention.
+
+              <br /><br />
+
+              Not everything important is loud.
+              Not every message is meant to be obvious.
+              Some things are just meant to be found… slowly.
+
+              <br /><br />
+
+              Whatever this year brings — bugs, breakthroughs, late nights, or quiet wins —
+              just know this:
+
+              <motion.span
                 className="text-gold font-medium"
                 animate={isInView ? { opacity: [0.5, 1, 0.5] } : {}}
                 transition={{ duration: 2, repeat: Infinity, delay: 2 }}
-              > together again</motion.span>.
+              >
+                you’re doing better than you think.
+              </motion.span>
             </p>
+
           </motion.div>
 
           <motion.div
             variants={itemVariants}
-            whileHover={{ 
-              scale: 1.02, 
+            whileHover={{
+              scale: 1.02,
               rotateY: -5,
               transition: { duration: 0.3 }
             }}
@@ -145,36 +178,38 @@ export const ReunionMessage = () => {
               transition={{ duration: 3, repeat: Infinity, delay: 2 }}
             />
             <p className="text-lg md:text-xl text-foreground/90 font-body leading-relaxed">
-              This birthday marks more than just another year — it marks 
-              <motion.span 
+              Another year, another version.
+              But some messages don’t load on the main route.
+              <motion.span
                 className="text-gold font-medium"
                 animate={isInView ? { opacity: [0.5, 1, 0.5] } : {}}
                 transition={{ duration: 2, repeat: Infinity, delay: 2.5 }}
-              > our reunion</motion.span>, 
-              a fresh start, and a promise that no matter what, 
-              we will always have each other.
+              >
+                {" "}Curiosity is required
+              </motion.span>.
+              Try navigating where logic says you shouldn’t. And find the hidden message.
             </p>
+
           </motion.div>
 
           <motion.div
             variants={itemVariants}
             className="flex justify-center items-center gap-4 pt-8"
           >
-            <motion.div 
+            <motion.div
               className="h-[1px] w-20 bg-gradient-to-r from-transparent to-gold/50"
               animate={isInView ? { scaleX: [0, 1] } : {}}
               transition={{ duration: 1, delay: 2 }}
             />
             <motion.div
-              animate={isInView ? { 
-                x: [0, 10, 0],
-                scale: [1, 1.2, 1],
+              animate={isInView ? {
+                scale: [1, 1.3, 1],
               } : {}}
               transition={{ duration: 1.5, repeat: Infinity }}
             >
-              <ArrowRight className="w-6 h-6 text-gold" />
+              <HelpCircle className="w-6 h-6 text-gold" />
             </motion.div>
-            <motion.div 
+            <motion.div
               className="h-[1px] w-20 bg-gradient-to-l from-transparent to-gold/50"
               animate={isInView ? { scaleX: [0, 1] } : {}}
               transition={{ duration: 1, delay: 2 }}

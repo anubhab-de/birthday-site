@@ -3,13 +3,13 @@ import { useRef } from "react";
 import { Camera, Heart } from "lucide-react";
 
 const photos = [
-  { id: 1, caption: "First memory together", placeholder: "Photo 1" },
-  { id: 2, caption: "That unforgettable day", placeholder: "Photo 2" },
-  { id: 3, caption: "Laughing till we cried", placeholder: "Photo 3" },
-  { id: 4, caption: "Brothers forever", placeholder: "Photo 4" },
-  { id: 5, caption: "Making new memories", placeholder: "Photo 5" },
-  { id: 6, caption: "The bond that never breaks", placeholder: "Photo 6" },
+  { id: 1, caption: "First memory together", src: "./photos/1.jpg" },
+  { id: 2, caption: "That unforgettable day", src: "./photos/2.jpg" },
+  { id: 3, caption: "", src: "./photos/3.jpg" },
+  { id: 4, caption: "", src: "./photos/4.jpg" },
+  { id: 5, caption: "Our long lost friend", src: "./photos/5.jpg" },
 ];
+
 
 export const PhotoGallery = () => {
   const ref = useRef(null);
@@ -27,9 +27,9 @@ export const PhotoGallery = () => {
   };
 
   const cardVariants = {
-    hidden: { 
-      opacity: 0, 
-      y: 80, 
+    hidden: {
+      opacity: 0,
+      y: 80,
       rotateX: -30,
       scale: 0.8,
     },
@@ -49,15 +49,15 @@ export const PhotoGallery = () => {
   return (
     <section ref={ref} className="min-h-screen py-20 px-4 relative overflow-hidden">
       {/* Animated background glow */}
-      <motion.div 
+      <motion.div
         className="absolute right-0 top-1/4 w-1/2 h-96 bg-gradient-to-l from-gold/5 to-transparent blur-3xl"
-        animate={isInView ? { 
+        animate={isInView ? {
           opacity: [0, 0.8, 0.4],
           scale: [0.8, 1, 1],
         } : {}}
         transition={{ duration: 2 }}
       />
-      
+
       {/* Floating hearts */}
       {isInView && [...Array(8)].map((_, i) => (
         <motion.div
@@ -68,7 +68,7 @@ export const PhotoGallery = () => {
             top: `${10 + (i % 3) * 30}%`,
           }}
           initial={{ opacity: 0, y: 0 }}
-          animate={{ 
+          animate={{
             opacity: [0, 0.6, 0],
             y: [0, -50, -100],
             x: [0, (i % 2 === 0 ? 20 : -20), 0],
@@ -83,7 +83,7 @@ export const PhotoGallery = () => {
           <Heart className="w-4 h-4 text-rose/40" fill="currentColor" />
         </motion.div>
       ))}
-      
+
       <div className="max-w-6xl mx-auto relative z-10">
         {/* Section header with enhanced animation */}
         <motion.div
@@ -92,14 +92,14 @@ export const PhotoGallery = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <motion.div 
+          <motion.div
             className="flex justify-center mb-6"
             animate={isInView ? {
               rotateY: [0, 360],
             } : {}}
             transition={{ duration: 1.5, delay: 0.3 }}
           >
-            <motion.div 
+            <motion.div
               className="p-4 rounded-full bg-secondary border border-gold/20"
               animate={isInView ? {
                 boxShadow: [
@@ -112,15 +112,15 @@ export const PhotoGallery = () => {
               <Camera className="w-8 h-8 text-gold" />
             </motion.div>
           </motion.div>
-          <motion.h2 
+          <motion.h2
             className="font-display text-3xl md:text-5xl text-gradient-gold mb-4"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={isInView ? { opacity: 1, scale: 1 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            Our Memories
+            Some Memories
           </motion.h2>
-          <motion.p 
+          <motion.p
             className="text-muted-foreground max-w-md mx-auto"
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 1 } : {}}
@@ -131,7 +131,7 @@ export const PhotoGallery = () => {
         </motion.div>
 
         {/* Photo grid with staggered animation */}
-        <motion.div 
+        <motion.div
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
           variants={containerVariants}
           initial="hidden"
@@ -141,8 +141,8 @@ export const PhotoGallery = () => {
             <motion.div
               key={photo.id}
               variants={cardVariants}
-              whileHover={{ 
-                scale: 1.08, 
+              whileHover={{
+                scale: 1.08,
                 rotateY: 10,
                 rotateX: 5,
                 z: 50,
@@ -158,33 +158,17 @@ export const PhotoGallery = () => {
                   whileHover={{ x: "200%" }}
                   transition={{ duration: 0.8 }}
                 />
-                
+
                 {/* Placeholder for photo */}
-                <div className="absolute inset-0 bg-gradient-to-br from-secondary to-muted flex items-center justify-center">
-                  <motion.div 
-                    className="text-center"
-                    whileHover={{ scale: 1.1 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <motion.div 
-                      className="w-16 h-16 rounded-full bg-gold/10 flex items-center justify-center mx-auto mb-3"
-                      animate={{
-                        boxShadow: [
-                          "0 0 0 0 hsl(45, 90%, 55%, 0.2)",
-                          "0 0 0 10px hsl(45, 90%, 55%, 0)",
-                        ]
-                      }}
-                      transition={{ duration: 2, repeat: Infinity, delay: index * 0.3 }}
-                    >
-                      <Camera className="w-8 h-8 text-gold/50" />
-                    </motion.div>
-                    <p className="text-muted-foreground text-sm">{photo.placeholder}</p>
-                    <p className="text-xs text-muted-foreground/50 mt-1">Click to add photo</p>
-                  </motion.div>
-                </div>
+                <img
+                  src={photo.src}
+                  alt={photo.caption}
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
+
 
                 {/* Overlay gradient */}
-                <motion.div 
+                <motion.div
                   className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent"
                   initial={{ opacity: 0 }}
                   whileHover={{ opacity: 1 }}
@@ -202,13 +186,13 @@ export const PhotoGallery = () => {
                 </motion.div>
 
                 {/* Decorative corners with animation */}
-                <motion.div 
+                <motion.div
                   className="absolute top-3 right-3 w-8 h-8 border-t-2 border-r-2 border-gold/30 rounded-tr-lg"
                   initial={{ opacity: 0, scale: 0 }}
                   whileHover={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.3 }}
                 />
-                <motion.div 
+                <motion.div
                   className="absolute bottom-3 left-3 w-8 h-8 border-b-2 border-l-2 border-gold/30 rounded-bl-lg"
                   initial={{ opacity: 0, scale: 0 }}
                   whileHover={{ opacity: 1, scale: 1 }}
@@ -226,7 +210,6 @@ export const PhotoGallery = () => {
           transition={{ duration: 0.8, delay: 1.5 }}
           className="text-center text-muted-foreground/60 text-sm mt-12 italic"
         >
-          Replace these placeholders with your actual photos to make this truly special
         </motion.p>
       </div>
     </section>

@@ -41,7 +41,7 @@ export const HeroSection = () => {
     <section className="min-h-screen flex flex-col items-center justify-center relative overflow-hidden px-4">
       {/* Background glow */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_hsl(45_90%_55%_/_0.08),_transparent_50%)]" />
-      
+
       {/* Animated decorative lines */}
       <motion.div
         className="absolute top-20 left-10 w-32 h-[1px] bg-gradient-to-r from-transparent via-gold/50 to-transparent"
@@ -66,7 +66,7 @@ export const HeroSection = () => {
             top: `${20 + (i % 3) * 25}%`,
           }}
           initial={{ opacity: 0, scale: 0 }}
-          animate={{ 
+          animate={{
             opacity: [0, 1, 0],
             scale: [0, 1, 0],
             rotate: [0, 180, 360]
@@ -97,7 +97,7 @@ export const HeroSection = () => {
           className="flex justify-center mb-6"
         >
           <motion.div
-            animate={{ 
+            animate={{
               boxShadow: [
                 "0 0 20px hsl(45, 90%, 55%, 0.3)",
                 "0 0 40px hsl(45, 90%, 55%, 0.6)",
@@ -105,9 +105,13 @@ export const HeroSection = () => {
               ]
             }}
             transition={{ duration: 2, repeat: Infinity }}
-            className="p-4 rounded-full bg-secondary/50"
+            className=" rounded-full bg-secondary/50"
           >
-            <Sparkles className="w-12 h-12 text-gold" />
+            <img
+              src="./sparkle.png"
+              alt="Sparkle icon"
+              className="rounded-full  w-20 h-20 text-gold"
+            />
           </motion.div>
         </motion.div>
 
@@ -151,7 +155,7 @@ export const HeroSection = () => {
           >
             <span className="text-gradient-gold">Anubhab</span>
           </motion.h2>
-          
+
           {/* Decorative underline */}
           <motion.div
             className="absolute -bottom-2 left-1/2 -translate-x-1/2 h-1 bg-gradient-to-r from-transparent via-gold to-transparent rounded-full"
@@ -181,19 +185,19 @@ export const HeroSection = () => {
           {[0, 1, 2].map((i) => (
             <motion.div
               key={i}
-              animate={{ 
+              animate={{
                 y: [0, -15, 0],
                 scale: [1, 1.2, 1],
               }}
-              transition={{ 
-                duration: 1.5, 
+              transition={{
+                duration: 1.5,
                 delay: i * 0.2,
                 repeat: Infinity,
               }}
             >
-              <Heart 
-                className={`w-6 h-6 ${i === 1 ? 'text-gold w-8 h-8' : 'text-rose'}`} 
-                fill="currentColor" 
+              <Heart
+                className={`w-6 h-6 ${i === 1 ? 'text-gold w-8 h-8' : 'text-rose'}`}
+                fill="currentColor"
               />
             </motion.div>
           ))}
@@ -213,7 +217,7 @@ export const HeroSection = () => {
           className="flex flex-col items-center gap-2 text-muted-foreground"
         >
           <span className="text-sm tracking-widest uppercase">Scroll</span>
-          <motion.div 
+          <motion.div
             className="w-[2px] h-12 bg-gradient-to-b from-gold/50 to-transparent"
             animate={{ scaleY: [1, 0.5, 1] }}
             transition={{ duration: 1.5, repeat: Infinity }}

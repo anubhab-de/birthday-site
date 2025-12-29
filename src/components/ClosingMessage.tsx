@@ -1,10 +1,13 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Heart, Infinity as InfinityIcon, Stars, Sparkles } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 export const ClosingMessage = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+
+  const navigate = useNavigate();
 
   const textVariants = {
     hidden: { opacity: 0, y: 30 },
@@ -74,11 +77,12 @@ export const ClosingMessage = () => {
           className="flex justify-center mb-12"
         >
           <motion.div 
-            className="relative"
+            className="relative cursor-pointer"
             animate={isInView ? {
               rotate: [0, 360],
             } : {}}
             transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+            onClick={()=>navigate("/random")}
           >
             <InfinityIcon className="w-20 h-20 text-gold" />
             <motion.div
@@ -103,11 +107,13 @@ export const ClosingMessage = () => {
         >
           To New Beginnings &{" "}
           <motion.span 
-            className="text-gradient-gold inline-block"
+            className="text-gradient-gold inline-block cursor-pointer"
             animate={isInView ? {
               scale: [1, 1.05, 1],
             } : {}}
             transition={{ duration: 2, repeat: Infinity }}
+            onClick={()=>navigate("/random")}
+
           >
             Forever Bonds
           </motion.span>
@@ -133,9 +139,11 @@ export const ClosingMessage = () => {
           >
             This birthday marks a{" "}
             <motion.span 
-              className="text-gold font-medium"
+              className="text-gold font-medium hover:border-b border-gold cursor-pointer inline-block"
               animate={isInView ? { opacity: [0.5, 1, 0.5] } : {}}
               transition={{ duration: 2, repeat: Infinity, delay: 1.5 }}
+            onClick={()=>navigate("/random")}
+
             >
               new chapter
             </motion.span>{" "}
@@ -157,8 +165,11 @@ export const ClosingMessage = () => {
                 ],
               } : {}}
               transition={{ duration: 2, repeat: Infinity }}
+            onClick={()=>navigate("/random")}
+            className="cursor-pointer"
+
             >
-              I love you, Anubhab.
+              Love you, My Bro.
             </motion.span>
           </motion.p>
         </motion.div>
@@ -197,7 +208,7 @@ export const ClosingMessage = () => {
             } : {}}
             transition={{ duration: 2, repeat: Infinity, delay: 2 }}
           >
-            — Your Loving Sibling
+            — Your Loving Brother
           </motion.p>
         </motion.div>
 
